@@ -23,8 +23,21 @@ public class Board extends BaseEntity {
 
     private String content;
 
-    @ManyToOne(fetch=FetchType.LAZY)  // N:1 (Board N : Writer 1)
+    @ManyToOne(fetch=FetchType.LAZY)
+    @ToString.Exclude  // N:1 (Board N : Writer 1)
                 // DB에서 외래키의 관계로 연결된 엔티티 클래스에 설정
                 // 명시적으로 Lazy로딩 지정
     private Member writer; // 연관관계 지정
+
+    public void setWriter(Member writer) {
+        this.writer = writer;
+    }
+
+    public void changeTitle(String title){
+        this.title = title;
+    }
+
+    public void changeContent(String content){
+        this.content = content;
+    }
 }
