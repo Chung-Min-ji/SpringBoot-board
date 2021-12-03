@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<Configuration status="warn" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">%d{HH:mm:ss.SSS} %5p --- [%10.50t] %-1.50c{1.}.%-1.20M:%L: %m%n%ex</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+    </Appenders>
+
+    <Loggers>
+        <Logger name="org.apache.catalina.startup.DigesterFactory" level="error" />
+        <Logger name="org.apache.catalina.util.LifecycleBase" level="error" />
+        <Logger name="org.apache.coyote.http11.Http11NioProtocol" level="warn" />
+        <Logger name="org.apache.sshd.common.util.SecurityUtils" level="warn"/>
+        <Logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn" />
+        <Logger name="org.eclipse.jetty.util.component.AbstractLifeCycle" level="error" />
+        <Logger name="org.hibernate.validator.internal.util.Version" level="warn" />
+        <Logger name="org.springframework.boot.actuate.endpoint.jmx" level="warn"/>
+
+
+        <Logger name="org.zerock.board.controller" level="debug" />
+        <Logger name="org.zerock.board.dto" level="debug" />
+        <Logger name="org.zerock.board.entity" level="debug" />
+        <Logger name="org.zerock.board.service" level="debug" />
+        <Logger name="org.zerock.board.repository" level="debug" />
+
+        <Root level="info">
+            <AppenderRef ref="Console" />
+        </Root>
+    </Loggers>
+</Configuration>

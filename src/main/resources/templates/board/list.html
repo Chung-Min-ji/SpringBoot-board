@@ -4,7 +4,7 @@
 <th:block th:replace="~{/layout/basic :: setContent(~{this::content})}">
 
   <th:block th:fragment="content">
-    <h1 class="mt-3">GuestBook List Page
+    <h1 class="mt-3">Board List Page
       <span>
         <a th:href="@{/board/register}">
           <button type="button" class="btn btn-outline-primary">REGISTER</button>
@@ -12,7 +12,7 @@
       </span>
     </h1>
 
-    <form action="/guestbook/list" method="get" id="searchForm">
+    <form action="/board/list" method="get" id="searchForm">
       <div class="input-group">
         <input type="hidden" name="page" value="1">
         <div class="input-group-prepend">
@@ -79,12 +79,24 @@
       </li>
 
       <li class="page-item" th:if="${result.next}">
-        <a class="page-link" th:href="@{/guestbook/list(page=${result.end+1},
+        <a class="page-link" th:href="@{/board/list(page=${result.end+1},
             type=${reqDTO.type},
             keyword =${reqDTO.keyword} )}">Next</a>
       </li>
 
     </ul>
 
+    <script>
+      //---- 검색
+      var searchForm=$("#searchForm");
+
+      $(".btn-search").click(function(e){
+        searchForm.submit();
+      });
+
+      $(".btn-clear").click(function(e){
+        searchForm.empty().submit();
+      });
+    </script>
   </th:block>
 </th:block>
